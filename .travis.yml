@@ -1,0 +1,25 @@
+sudo: required
+language: php
+dist: bionic
+
+php:
+- 7.2
+
+branches:
+  only:
+    - master
+
+cache:
+  directories:
+    - $HOME/.composer/cache
+
+
+install:
+- travis_retry composer install --prefer-dist --no-suggest --no-interaction
+
+script:
+- vendor/bin/phpunit
+
+after_script:
+- mv tests/_output/coverage.xml clover.xml
+- ./cc-test-reporter after-build --coverage-input-type clover --id 12345 --exit-code $TRAVIS_TEST_RESULT

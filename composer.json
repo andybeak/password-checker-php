@@ -1,0 +1,24 @@
+{
+    "name": "andybeak/password-checker-php",
+    "description": "This package helps you to make it easier to check whether a user is using a risky password.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Andrew Beak",
+            "email": "andy.beak@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^7.2.18"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "AndyBeak\\PasswordChecker\\": "src"
+        }
+    }
+}

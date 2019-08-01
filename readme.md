@@ -1,5 +1,7 @@
 # Password checker
 ![Travis build](https://travis-ci.com/andybeak/password-checker-php.svg?branch=master)
+[![Maintainability](https://api.codeclimate.com/v1/badges/9a6d1f270f4a35d73b6b/maintainability)](https://codeclimate.com/github/andybeak/password-checker-php/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/9a6d1f270f4a35d73b6b/test_coverage)](https://codeclimate.com/github/andybeak/password-checker-php/test_coverage)
 
 This package helps you to make it easier to check whether a user is using a risky password.
 

@@ -17,9 +17,15 @@ cache:
 install:
 - travis_retry composer install --prefer-dist --no-suggest --no-interaction
 
+before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
+
 script:
-- vendor/bin/phpunit
+- "vendor/bin/phpunit --coverage-text --coverage-clover build/logs/clover.xml"
+- if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT; fi
+
 
 after_script:
-- mv tests/_output/coverage.xml clover.xml
 - ./cc-test-reporter after-build --coverage-input-type clover --id 8a70418503eece4a153acfa3456f2e999c748b1c01cfddeca9092a9c48e4f7ed --exit-code $TRAVIS_TEST_RESULT

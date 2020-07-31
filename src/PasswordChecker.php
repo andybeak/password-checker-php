@@ -108,12 +108,16 @@ class PasswordChecker
 
             while (!feof($fileHandle) && self::isRunLengthShorterThanLoopLimit($startTime)) {
 
-                $badPassword = fgets($fileHandle);
+                $badPassword = trim(fgets($fileHandle));
 
                 $distance = levenshtein($password, $badPassword);
 
                 if ($distance < $minimumLength) {
                     $minimumLength = $distance;
+                }
+                
+                if ($distance === 0) {
+                    break;
                 }
             }
 
